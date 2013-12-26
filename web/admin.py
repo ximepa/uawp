@@ -39,9 +39,8 @@ class NewsGroupsAdmin(TranslationAdmin):
     class Media:
         js = (
             'default/js/filter.js',
-            'de'
             'default/modeltranslation/js/force_jquery.js',
-            'default/modeltranslation/js/jquery-ui.min.js',
+            'default/js/jquery-ui.min.js',
             'default/modeltranslation/js/tabbed_translation_fields.js',
         )
         css = {
@@ -67,7 +66,7 @@ class StaticPagesAdmin(TranslationAdmin):
         js = (
             'default/js/filter.js',
             'default/modeltranslation/js/force_jquery.js',
-            'default/modeltranslation/js/jquery-ui.min.js',
+            'default/js/jquery-ui.min.js',
             'default/modeltranslation/js/tabbed_translation_fields.js',
         )
         css = {

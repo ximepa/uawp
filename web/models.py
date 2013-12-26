@@ -51,7 +51,7 @@ class NewsGroups(models.Model):
 
 class News(models.Model):
     name = models.CharField(max_length=100, verbose_name=_(u'Name'), blank=True, help_text=_(u'News name'))
-    description = models.TextField(help_text=_(u'News description'))
+    description = HTMLField(help_text=_(u'News description'))
     text = HTMLField(help_text=_(u'News main text'))
     group = models.ForeignKey(NewsGroups, blank=True)
     seo_title = models.CharField(max_length=20, verbose_name=_(u'Title'), blank=True, help_text=_(u'Title for search engine'))
