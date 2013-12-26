@@ -10,6 +10,6 @@ urlpatterns = patterns('',
     url(r'^captcha/', include('captcha.urls')),
     (r'^tinymce/', include('tinymce.urls')),
 
-
+    url(r'^', include('web.urls', 'web')),
     url(r'^admin/', include(admin.site.urls)),
 )
