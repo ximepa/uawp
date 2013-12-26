@@ -1,0 +1,14 @@
+*.pyc
+*.iml
+*.*~
+.idea
+.pydevproject
+.project
+.settings
+.settings/*
+settings_local.py
+nbproject
+*.log
+*.pot
+*.pyc
+
