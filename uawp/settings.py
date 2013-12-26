@@ -97,6 +97,8 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+AUTH_PROFILE_MODULE = 'cabinet.UserProfile'
+
 try:
     from settings_local import *
 except ImportError:
