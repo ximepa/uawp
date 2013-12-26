@@ -1,0 +1,9 @@
+Django==1.6.1
+Pillow==2.2.2
+South==0.8.4
+argparse==1.2.1
+django-modeltranslation==0.7.2
+django-registration==1.0
+django-simple-captcha==0.4.0
+six==1.4.1
+wsgiref==0.1.2
