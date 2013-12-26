@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from web.forms import NewsGroupForm
 
 
 def index(request):
@@ -96,28 +97,28 @@ def news_full(request, id):
 
 def static_pages(request, name):
     if request.user.is_authenticated():
-        static_pages_true = Static_pages.objects.filter(show_in_menu=True)
+        static_pages_true = StaticPages.objects.filter(show_in_menu=True)
         if request.method == 'GET':
             try:
-                stat_pages = Static_pages.objects.get(name=name, show_in_menu=True)
+                stat_pages = StaticPages.objects.get(name=name, show_in_menu=True)
                 return render_to_response('static_pages.html',
                                           {'pages': stat_pages, 'pages_filtered': static_pages_true,
                                            'user': request.user, }, context_instance=RequestContext(request))
-            except Static_pages.DoesNotExist:
+            except StaticPages.DoesNotExist:
                 return render_to_response('404.html', {'pages_filtered': static_pages_true, 'user': request.user, },
                                           context_instance=RequestContext(request))
         else:
             return render_to_response('404.html', {'pages_filtered': static_pages_true, 'user': request.user, },
                                       context_instance=RequestContext(request))
     else:
-        static_pages_true = Static_pages.objects.filter(show_in_menu=True)
+        static_pages_true = StaticPages.objects.filter(show_in_menu=True)
         if request.method == 'GET':
             try:
-                stat_pages = Static_pages.objects.get(name=name, show_in_menu=True)
+                stat_pages = StaticPages.objects.get(name=name, show_in_menu=True)
                 return render_to_response('static_pages.html',
                                           {'pages': stat_pages, 'pages_filtered': static_pages_true, },
                                           context_instance=RequestContext(request))
-            except Static_pages.DoesNotExist:
+            except StaticPages.DoesNotExist:
                 return render_to_response('404.html', {'pages_filtered': static_pages_true, },
                                           context_instance=RequestContext(request))
         else:

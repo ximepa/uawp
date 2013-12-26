@@ -45,12 +45,12 @@
                     <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
                 {% endif %}
                 {% url 'auth_login' as url_auth_login %}
-                {% url 'web:user_profile' as url_user_profile %}
+                {% url 'cabinet:user_profile' as url_user_profile %}
                 {% if user.is_authenticated %}
                     {% if request.get_full_path == url_user_profile %}
-                        <li><a href="{% url 'web:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
+                        <li><a href="{% url 'cabinet:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
                     {% else %}
-                        <li><a href="{% url 'web:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
+                        <li><a href="{% url 'cabinet:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
                     {% endif %}
                 {% else %}
                     {% if request.get_full_path == url_auth_login %}
@@ -59,16 +59,16 @@
                         <li><a href="{% url 'auth_login' %}" >{% trans 'Log in' %}</a></li>
                     {% endif %}
                 {% endif %}
-                {% url 'web:profile_options' as url_profile_options %}
+                {% url 'cabinet:profile_options' as url_profile_options %}
                 {% if user.is_authenticated %}
                     {% if request.get_full_path == url_profile_options %}
-                        <li><a href="{% url 'web:profile_options' %}" >{% trans 'Options' %}</a></li>
+                        <li><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
                         <a id="toTop" href="#" style="display: inline;">
                             <span id="toTopHover" style="opacity: 0;"></span>
                             To Top
                         </a>
                     {% else %}
-                        <li><a href="{% url 'web:profile_options' %}" >{% trans 'Options' %}</a></li>
+                        <li><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
                         <a id="toTop" href="#" style="display: inline;">
                             <span id="toTopHover" style="opacity: 0;"></span>
                             To Top

@@ -1,0 +1,76 @@
+/*
+Name: Sliding Login Panel with jQuery 1.3.2
+Author: Jeremie Tisseau
+Author URI: http://web-kreation.com/
+Script URI: http://web-kreation.com/index.php/tutorials/nice-clean-sliding-login-panel-built-with-jquery/
+Date: March 26, 2009
+Version: 1.0
+
+	Copyright 2009 Jeremie Tisseau
+	"Sliding Login Panel with jQuery 1.3.2" is distributed under the GNU General Public License version 3:
+	http://www.gnu.org/licenses/gpl-3.0.html
+
+*/
+
+.styled {
+    padding-top: 18px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -khtml-border-radius:10px;
+}
+
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: url(../img/aion_new_bg.jpeg) no-repeat center center fixed;
+}
+
+.full {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#ht_styled {
+    background-color: #000000;
+    border-style: solid none none;
+}
+
+#nav_styled {
+    max-width: none;
+}
+
+#toTop {
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	overflow:hidden;
+	width:51px;
+	height:51px;
+	border:none;
+	text-indent:-999px;
+	background:url(../img/ui.totop.png) no-repeat left top;
+}
+#toTopHover {
+	background:url(../img/ui.totop.png) no-repeat left -51px;
+	width:51px;
+	height:51px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+#toTop:active, #toTop:focus {
+	outline:none;
+}
+
+#id_captcha_1 {
+    width: 50%;
+}

@@ -53,6 +53,7 @@ LOCAL_APPS = (
     'web',
     'cabinet',
     'feed_back',
+    'options',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
