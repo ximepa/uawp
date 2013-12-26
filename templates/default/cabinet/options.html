@@ -1,0 +1,17 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Options' %}{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block content %}
+    <div>
+        <input id="btn-options" class="btn btn-primary" type="button" value="{% trans 'Change master account password' %}" onclick="location.href='{% url "auth_password_change" %}';"/>
+    </div>
+    <div>
+        <input id="btn-options" class="btn btn-primary" type="button" value="{% trans 'Bind game account' %}" onclick="location.href='{% url "web:bind_game_acc" %}';"/>
+
+    </div>
+    <div>
+        <input id="btn-options" class="btn btn-primary" type="button" value="{% trans 'Create game account' %}" onclick="location.href='{% url "web:create_game_acc" %}';"/>
+    </div>
+{% endblock %}

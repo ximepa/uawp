@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+{% block title %}
+    {% trans 'Вход' %}
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+            {% csrf_token %}
+            <div class="page-header" style="text-align: center">
+              <h1><small>{% trans 'Login' %}</small></h1>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">{% trans 'Login' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form.username }}
+                    </div>
+                    {{ form.username.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form.username }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">{% trans 'Password' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password }}
+                    </div>
+                    {{ form.password.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">{% trans 'Код с картинки: ' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        {{ form.captcha }}
+                    </div>
+                    {{ form.captcha.errors }}
+                    <p><a href="{% url "auth_password_reset" %}">Forgot</a> your password?  <a href="{% url "registration_register" %}">Need an account</a>?</p>
+                {% else %}
+                    <div class="input-group">
+                        {{ form.captcha }}
+                    </div>
+                    <p><a href="{% url "auth_password_reset" %}">Forgot</a> your password?  <a href="{% url "registration_register" %}">Need an account</a>?</p>
+                {% endif %}
+            </div>
+            <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary">{% trans 'Log in' %}</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+                <hr>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2">
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Create game account' %}{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <form method="post">{% csrf_token %}
+            <fieldset id="change_form">
+                <legend>{% trans 'Create game account' %}</legend>
+                <label>{% trans 'Username' %}</label>
+                {{ form.login }}
+                {% if form.errors %}
+                    {{ form.login.errors }}
+                {% endif %}
+                <label>{% trans 'Password' %}</label>
+                {{ form.password }}
+                {% if form.errors %}
+                    {{ form.password.errors }}
+                {% endif %}
+                <br />
+                <button type="submit" class="btn btn-inverse">{% trans 'Create' %}</button>
+            </fieldset>
+        </form>
+    {% else %}
+        {% trans 'You are not logged in' %}
+    {% endif %}
+{% endblock %}

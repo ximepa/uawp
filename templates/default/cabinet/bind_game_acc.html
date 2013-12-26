@@ -1,0 +1,33 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Bind game account' %}{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <form method="post">{% csrf_token %}
+            <fieldset id="change_form">
+                <legend>{% trans 'Bind game account' %}</legend>
+                <label>{% trans 'Username' %}</label>
+                {{ form.login }}
+                {% if form.errors %}
+                    {{ form.login.errors }}
+                {% endif %}
+                <label>{% trans 'Password' %}</label>
+                {{ form.password }}
+                {% if form.errors %}
+                    {{ form.password.errors }}
+                {% endif %}
+                <label>{% trans 'Captcha' %}</label>
+                {{ form.captcha }}
+                {% if form.errors %}
+                    {{ form.captcha.errors }}
+                {% endif %}
+                <br />
+                <button type="submit" class="btn btn-inverse">{% trans 'Bind' %}</button>
+            </fieldset>
+        </form>
+    {% else %}
+        {% trans 'You are not logged in' %}
+    {% endif %}
+{% endblock %}

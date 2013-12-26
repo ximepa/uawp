@@ -1,0 +1,26 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Change game password' %}{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <form method="post">{% csrf_token %}
+            <fieldset id="change_form">
+                <legend>{% trans 'Change game password' %}</legend>
+                <label>{% trans 'Old passwword' %}</label>
+                {{ form.old_password }}
+                <!--<span class="help-block">Example block-level help text here.</span>-->
+                <label>{% trans 'New password' %}</label>
+                {{ form.new_password }}
+                <!--<span class="help-block">Example block-level help text here.</span>-->
+                <label>{% trans 'Repeat passwotd' %}</label>
+                {{ form.repeat_password }}
+                <!--<span class="help-block">Example block-level help text here.</span>-->
+                <br />
+                <button type="submit" class="btn btn-inverse">{% trans 'Change' %}</button>
+            </fieldset>
+        </form>
+    {% else %}
+        {% trans 'You are not logged in' %}
+    {% endif %}
+{% endblock %}

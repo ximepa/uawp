@@ -1,0 +1,132 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+{% block extra_head %}
+    <script type="text/javascript">
+        $(function() {
+            $( "#tabs" ).tabs({ fx: { opacity: 'toggle' } });
+        });
+    </script>
+{% endblock %}
+{% block title %}{% trans 'Personal cabinet' %}{% endblock %}
+{% block content %}
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+    {% if user.is_authenticated %}
+        <div id="tabs-1">
+            <h3 class="">{% trans 'Personal cabinet' %}</h3>
+            <p style="margin-top: 10px">{% trans 'Welcome to personal cabinet' %}, {{ user|upper }}</p>
+            <p>{% trans 'Your score count is - ' %}{{ user.score }}</p>
+            <input id="btn-options" class="btn btn-primary" type="button" value="{% trans 'Выйти' %}" onclick="location.href='{% url "auth_logout" %}';"/>
+        </div>
+        <div id="tabs-1">
+            <h3 class="">{% blocktrans %}Game accounts {{ user_acc_count }} from 5{% endblocktrans %}</h3>
+        </div>
+        {% if no_game_account %}
+            <p>{{ no_game_account }}</p>
+            <hr>
+        {% else %}
+            <div class="accordion" id="accordion-96449">
+                {% for game_acc in user_profile.game_acc.all %}
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-96449" href="#{{ game_acc.login }}">{{ game_acc.login }}</a>
+                        </div>
+                        <div id="{{ game_acc.login }}" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div class="left-block">
+                                    <h3 style="text-align: center">{% trans 'Game account' %}</h3>
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            {% trans 'Allowed IP' %}
+                                        </dt>
+                                        <dd>
+                                            {% if game_acc.allow_ip %}
+                                                {{ game_acc.allow_ip }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </dd>
+                                        <dt>
+                                            {% trans 'Allowed hwid' %}
+                                        </dt>
+                                        <dd>
+                                            {% if game_acc.allow_hwid %}
+                                                {{ game_acc.allow_hwid }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </dd>
+                                        <dt>
+                                            {% trans 'Last server' %}
+                                        </dt>
+                                        <dd>
+                                            {% if game_acc.last_server %}
+                                                {{ game_acc.last_server }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </dd>
+                                        <dt>
+                                            {% trans 'Last IP' %}
+                                        </dt>
+                                        <dd>
+                                            {% if game_acc.last_ip %}
+                                                {{ game_acc.last_ip }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </dd>
+                                        <dt>
+                                            {% trans 'Change password' %}
+                                        </dt>
+                                        <dd>
+                                            <button type="button" class="btn btn-primary btn-small" onclick="location.href='{% url 'web:change_game_pass' game_acc %}'">{% trans 'Change' %}</button>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="right-block">
+                                    <h3 style="text-align: center">{% trans 'Characters' %}</h3>
+                                    <dl class="dl-horizontal">
+                                        {% for user_character in game_acc.characters %}
+{#                                          <dt>
+                                                {% trans 'Character name' %}
+                                            </dt>
+                                            <dd>
+                                                {{ user_character.char_name }}
+                                            </dd>
+                                            <dt>
+                                                {% trans 'Sex' %}
+                                            </dt>
+                                            <dd>
+                                                {{ user_character.sex }}
+                                            </dd>
+                                            <dt>
+                                                {% trans 'Online' %}
+                                            </dt>
+                                            <dd>
+                                                {{ user_character.online }}
+                                            </dd>
+                                            <dt>
+                                                {% trans 'PVP' %}
+                                            </dt>
+                                            <dd>
+                                                {{ user_character.pvpkills }}
+                                            </dd>
+                                        {% endfor %}
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% else %}
+            {% trans 'You are not logged in' %}
+        {% endif %}
+    </div>
+    <div class="col-md-1">
+    </div>
+{% endblock %}

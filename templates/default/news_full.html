@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ full_news.name }}{% endblock %}
+{% block content %}
+    <h1>
+        {{ full_news.name }}
+    </h1>
+    <p class="lead">{% trans 'by' %} {{ full_news.author }}</p>
+    <hr>
+    <p>
+        <span class="glyphicon glyphicon-time"></span>
+        Posted on {{ full_news.created|date:'Y-m-d H:i' }} {% if full_news.last_modified %}({% trans 'last modified on' %} {{ full_news.last_modified|date:'Y-m-d H:i' }}){% endif %}
+    </p>
+    <hr>
+    <p>
+        {{ full_news.text|safe }}
+    </p>
+    <a class="btn btn-primary" href="#">
+        {% trans 'Downloads' %}
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+    <hr>
+{% endblock %}

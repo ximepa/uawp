@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans 'Feedback form' %}
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <form method="post">{% csrf_token %}
+            <fieldset id="change_form">
+                <div class="page-header" style="text-align: center">
+                    <h1><small>{% trans 'Feedback form' %}</small></h1>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'Group' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.groups }}
+                        </div>
+                        {{ form.groups.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.groups }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'Topic' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.topic }}
+                        </div>
+                        {{ form.topic.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.topic }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'username' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.username }}
+                        </div>
+                        {{ form.username.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.username }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'Email' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.email }}
+                        </div>
+                        {{ form.email.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.email }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'Message text' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.message }}
+                        </div>
+                        {{ form.message.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.message }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">{% trans 'Captcha' %}</label>
+                    {% if form.errors %}
+                        <div class="input-group alert-danger">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.captcha }}
+                        </div>
+                        {{ form.captcha.errors }}
+                    {% else %}
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            {{ form.captcha }}
+                        </div>
+                    {% endif %}
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary pull-right">{% trans 'Send' %}</button>
+                <hr>
+            </fieldset>
+
+        </form>
+    </div>
+    <div class="col-md-1">
+    </div>
+    {% else %}
+        {% trans 'You are not log in' %}
+    {% endif %}
+{% endblock %}

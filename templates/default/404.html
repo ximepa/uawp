@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="alert alert-error">
+				 <button type="button" class="close" data-dismiss="alert">×</button>
+				<h4>
+					{% trans 'Page not found' %}
+				</h4> {% blocktrans %}<strong>Page</strong> not found or not allow{% endblocktrans %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

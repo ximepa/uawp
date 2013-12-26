@@ -1,0 +1,87 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load static_pages %}
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse" role="navigation">
+    <div id="nav_styled" class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">Aion</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                {% url 'web:index' as url_main %}
+                {% if request.get_full_path == url_main %}
+                    <li><a href="{% url 'web:index' %}">{% trans 'Main' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'web:index' %}">{% trans 'Main' %}</a></li>
+                {% endif %}
+                {% for item in get_static_pages %}
+                    {% if request.get_full_path == item.get_absolute_url %}
+                        <li><a href="{% url 'web:index' %}page/{{ item.name }}/" class='list-group-item active'>
+                            {{ item.page_name }}
+                        </a></li>
+                    {% else %}
+                        <li><a href="{% url 'web:index' %}page/{{ item.name }}/" >
+                            {{ item.page_name }}
+                        </a></li>
+                    {% endif %}
+                {% endfor %}
+                {% url 'web:news' as url_news %}
+                {% if request.get_full_path == url_news %}
+                    <li><a href="{% url 'web:news' %}" >{% trans 'News' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'web:news' %}" >{% trans 'News' %}</a></li>
+                {% endif %}
+                {% url 'registration_register' as url_registration_register %}
+                {% if request.get_full_path == url_registration_register %}
+                    <li><a href="{% url 'registration_register' %}?next={% url 'web:statistics' %}" >{% trans 'Register' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'registration_register' %}" >{% trans 'Register' %}</a></li>
+                {% endif %}
+                {% url 'feedback' as url_feedback %}
+                {% if request.get_full_path == url_feedback %}
+                    <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
+                {% else %}
+                    <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
+                {% endif %}
+                {% url 'auth_login' as url_auth_login %}
+                {% url 'web:user_profile' as url_user_profile %}
+                {% if user.is_authenticated %}
+                    {% if request.get_full_path == url_user_profile %}
+                        <li><a href="{% url 'web:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'web:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
+                    {% endif %}
+                {% else %}
+                    {% if request.get_full_path == url_auth_login %}
+                        <li><a href="{% url 'auth_login' %}" >{% trans 'Log in' %}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'auth_login' %}" >{% trans 'Log in' %}</a></li>
+                    {% endif %}
+                {% endif %}
+                {% url 'web:profile_options' as url_profile_options %}
+                {% if user.is_authenticated %}
+                    {% if request.get_full_path == url_profile_options %}
+                        <li><a href="{% url 'web:profile_options' %}" >{% trans 'Options' %}</a></li>
+                        <a id="toTop" href="#" style="display: inline;">
+                            <span id="toTopHover" style="opacity: 0;"></span>
+                            To Top
+                        </a>
+                    {% else %}
+                        <li><a href="{% url 'web:profile_options' %}" >{% trans 'Options' %}</a></li>
+                        <a id="toTop" href="#" style="display: inline;">
+                            <span id="toTopHover" style="opacity: 0;"></span>
+                            To Top
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <a id="toTop" href="#" style="display: inline;">
+                        <span id="toTopHover" style="opacity: 0;"></span>
+                        To Top
+                    </a>
+                {% endif %}
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+</nav>

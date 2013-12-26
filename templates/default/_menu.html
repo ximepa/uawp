@@ -1,0 +1,31 @@
+{% load i18n %}
+{% get_available_languages as languages %}
+<ul class="nav nav-pills">
+    {% for item in get_static_pages %}
+        {% if request.get_full_path == item.get_absolute_url %}
+            <li class="active">
+                <a href="{% url 'web:index' %}page/{{ item.name }}/">
+                    {{ item.page_name }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{% url 'web:main' %}page/{{ item.name }}/">
+                    {{ item.page_name }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    <li class="dropdown pull-right">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">{% trans 'Язык' %}<strong class="caret"></strong></a>
+        <ul class="dropdown-menu">
+
+            <li class="nav-header">{% trans "Select your language:" %}</li>
+            {% for lang_code, lang_name in languages %}
+                {% language lang_code %}
+                    <li><a href="{% url 'web:index' %}">{{ lang_name }}</a></li>
+                {% endlanguage %}
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,33 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block slider %}
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <a>{% trans 'Сообщение успешно отправлено' %}</a>
+        <br />
+    <script type="text/javascript"><!--
+        var ints = 5; // секунды
+        function alertes () {
+            document.getElementById('calc').innerHTML = ints;
+            if ( ints == 0 ) {
+                document.location.href = '/accounts/profile/';
+                ints = '--';
+            }
+            if ( ints > 0 ) {
+                ints--;
+            }
+        };
+        function refresh(){
+            if(ints > 0) time_Interval = setInterval("alertes ()", 1000 );
+        };
+        refresh();
+//--></script>
+        <p>{% blocktrans %}Вы будете автоматически перемещены через <b><span id="calc">-</span></b> сек.{% endblocktrans %}</p>
+    {% else %}
+        Вы не авторизированы
+    {% endif %}
+
+{% endblock %}

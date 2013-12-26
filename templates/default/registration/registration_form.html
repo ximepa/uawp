@@ -1,0 +1,80 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Register for an account' %}{% endblock %}
+{% block content %}
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <form method="post">{% csrf_token %}
+            <div class="page-header" style="text-align: center">
+              <h1><small>{% trans 'Registration' %}</small></h1>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">{% trans 'Login' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form.username }}
+                    </div>
+                    {{ form.username.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        {{ form.username }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">{% trans 'Email' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        {{ form.email }}
+                    </div>
+                    {{ form.email.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        {{ form.email }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">{% trans 'Password' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password1 }}
+                    </div>
+                    {{ form.password1.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password1 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">{% trans 'Repeat password' %}</label>
+                {% if form.errors %}
+                    <div class="input-group alert-danger">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password2 }}
+                    </div>
+                    {{ form.password2.errors }}
+                {% else %}
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                        {{ form.password2 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary">{% trans 'Create' %}</button>
+                <hr>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2">
+    </div>
+{% endblock %}

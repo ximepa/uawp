@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
     'captcha',
     'south',
     'modeltranslation',
+    'tinymce',
 )
 
 LOCAL_APPS = (
@@ -73,7 +74,13 @@ WSGI_APPLICATION = 'uawp.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('ru', 'Russian'),
+    ('en', 'English'),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_TRANSLATION_REGISTRY = 'uawp.translation'
 
 TIME_ZONE = 'Europe/Kiev'
 
@@ -96,7 +103,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-
+print STATICFILES_DIRS
 AUTH_PROFILE_MODULE = 'cabinet.UserProfile'
 
 try:

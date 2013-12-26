@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'News' %}{% endblock %}
+{% block content %}
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <div class="well well-sm">
+            <form method="GET" class="">
+                <span class="current">
+                    Страница {{ news_filtered.number }} из {{ news_filtered.paginator.num_pages }}.
+                </span>
+                <span>
+                    {{ news_filter_form.groups }}
+                </span>
+                <span><input class="btn btn-sm btn-default" type="submit" value="{% trans 'Filter' %}"></span>
+                <span><a href="{% url 'web:news' %}" class="btn btn-sm btn-default" type="submit">{% trans 'Clear filter' %}</a>
+            </form>
+        </div>
+        {% for news_filtered in news_filtered %}
+            <h1>
+                <a href="{% url 'web:news' %}{{ news_filtered.id }}">{{ news_filtered.name }} - {{ news_filtered.group.bootstrap_panel_class }}</a>
+            </h1>
+            <p class="lead">{% trans 'by' %} <b>{{ news_filtered.author }}</b></p>
+            <hr>
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                Posted on {{ news_filtered.created|date:'Y-m-d H:i' }} {% if news_filtered.last_modified %}({% trans 'last modified on' %} {{ news_filtered.last_modified|date:'Y-m-d H:i' }}){% endif %}
+            </p>
+            <hr>
+            <p>
+                {{ news_filtered.text|safe }}
+            </p>
+            <a type="button" class="btn btn-{{ news_filtered.group.bootstrap_panel_class }} pull-right" style="margin-left: 20px" href="{% url 'web:news' %}{{ news_filtered.id }}/">{% trans 'подробнее' %} »</a>
+            <hr id="hr_styled">
+        {% endfor %}
+        <ul class="pager">
+            {% if news_filtered.has_previous %}
+                <li class="previous">
+                    <a href="?page={{ news_filtered.previous_page_number }}">&larr; {% trans 'Older' %}</a>
+                </li>
+            {% else %}
+                <li class="previous disabled">
+                    <a href="#">&larr; {% trans 'Older' %}</a>
+                </li>
+            {% endif %}
+            {% if news_filtered.has_next %}
+                <li class="next">
+                    <a href="?page={{ news_filtered.next_page_number }}">{% trans 'Newer' %} &rarr;</a>
+                </li>
+            {% else %}
+                <li class="next disabled">
+                    <a href="#">{% trans 'Newer' %} &rarr;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="col-md-1">
+    </div>
+{% endblock %}
