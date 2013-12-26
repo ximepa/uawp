@@ -23,7 +23,10 @@ def news(request):
     from django.utils import translation
     cur_language = translation.get_language()
     print cur_language
-    page_options = PageOption.objects.get(pk=1)
+    try:
+        page_options = PageOption.objects.get(pk=1)
+    except PageOption.DoesNotExist:
+        page_options = None
     groups_all = NewsGroups.objects.all()
     if request.method == 'GET':
         request.session['groups'] = request.GET.get('groups', 0)
