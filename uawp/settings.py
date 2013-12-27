@@ -110,8 +110,23 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-print STATICFILES_DIRS
 AUTH_PROFILE_MODULE = 'cabinet.UserProfile'
+
+ENABLE_CABINET = True
+ENABLE_FEEDBACK = True
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    'django.core.context_processors.request',
+    "django.contrib.messages.context_processors.messages",
+    'web.context_processors.enable_cabinet'
+)
+
 
 try:
     from settings_local import *
