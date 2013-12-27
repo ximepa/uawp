@@ -22,19 +22,19 @@ def profile(request, ):
     print '----'
     if request.user.is_authenticated():
         try:
-            user_profile = UserProfile.objects.get(username=request.user)
+            user_profile = UserProfile.objects.get(user=request.user)
             user_game_acc = user_profile.game_acc.all()
             user_acc_count = user_game_acc.count()
             user_characters = characters.filter(account_name__in = user_game_acc)
             print user_characters
             no_game_account = _('У вас нету игровых аккаутнов, чтобы создать новый аккаунт или привязать сущестующий, перейдите в настройки')
             if user_game_acc.count() == 0:
-                return render_to_response('profile/profile.html', {
+                return render_to_response('cabinet/profile.html', {
                     'no_game_account': no_game_account,
                     'user_acc_count': user_acc_count,
                     }, context_instance=RequestContext(request))
             else:
-                return render_to_response('profile/profile.html',
+                return render_to_response('cabinet/profile.html',
                                           {'user': request.user,
                                            'user_profile': user_profile, 'user_characters': user_characters, 'user_acc_count': user_acc_count}, context_instance=RequestContext(request))
         except UserProfile.DoesNotExist:
@@ -45,6 +45,6 @@ def profile(request, ):
 
 def profile_options(request):
     if request.user.is_authenticated():
-        return render_to_response('profile/options.html', {'user': request.user}, context_instance=RequestContext(request))
+        return render_to_response('cabinet/options.html', {'user': request.user}, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect('/accounts/login')

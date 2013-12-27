@@ -121,6 +121,7 @@ class AccountData(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
+    game_acc = models.ManyToManyField('AccountData', related_name='game_accounts')
     coints = models.IntegerField(default=0)
     is_premium = models.BooleanField(default=False,)
     is_vip = models.BooleanField(default=False,)

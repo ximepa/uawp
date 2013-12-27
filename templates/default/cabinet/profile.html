@@ -1,4 +1,4 @@
-{% extends 'profile/profile_base.html' %}
+{% extends 'cabinet/profile_base.html' %}
 {% load i18n %}
 {% block extra_head %}
     <script type="text/javascript">
@@ -81,7 +81,7 @@
                                             {% trans 'Change password' %}
                                         </dt>
                                         <dd>
-                                            <button type="button" class="btn btn-primary btn-small" onclick="location.href='{% url 'web:change_game_pass' game_acc %}'">{% trans 'Change' %}</button>
+                                            <button type="button" class="btn btn-primary btn-small" onclick="location.href='{% url 'cabinet:change_game_pass' game_acc %}'">{% trans 'Change' %}</button>
                                         </dd>
                                     </dl>
                                 </div>
