@@ -28,19 +28,19 @@
                 {% endfor %}
                 {% url 'web:news' as url_news %}
                 {% if request.get_full_path == url_news %}
-                    <li><a href="{% url 'web:news' %}" >{% trans 'News' %}</a></li>
+                    <li class="active"><a href="{% url 'web:news' %}" >{% trans 'News' %}</a></li>
                 {% else %}
                     <li><a href="{% url 'web:news' %}" >{% trans 'News' %}</a></li>
                 {% endif %}
                 {% url 'registration_register' as url_registration_register %}
                 {% if request.get_full_path == url_registration_register %}
-                    <li><a href="{% url 'registration_register' %}?next={% url 'web:statistics' %}" >{% trans 'Register' %}</a></li>
+                    <li class="active"><a href="{% url 'registration_register' %}?next={% url 'web:statistics' %}" >{% trans 'Register' %}</a></li>
                 {% else %}
                     <li><a href="{% url 'registration_register' %}" >{% trans 'Register' %}</a></li>
                 {% endif %}
                 {% url 'feedback' as url_feedback %}
                 {% if request.get_full_path == url_feedback %}
-                    <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
+                    <li class="active"><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
                 {% else %}
                     <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
                 {% endif %}
@@ -49,30 +49,26 @@
                 {% if ENABLE_CABINET %}
                     {% if user.is_authenticated %}
                         {% if request.get_full_path == url_user_profile %}
-                            <li><a href="{% url 'cabinet:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
+                            <li class="active"><a href="{% url 'cabinet:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
                         {% else %}
                             <li><a href="{% url 'cabinet:user_profile' %}" >{% trans 'Cabinet' %}</a></li>
                         {% endif %}
                         {% if request.get_full_path == url_profile_options %}
-                        <li><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
-                        <a id="toTop" href="#" style="display: inline;">
-                            <span id="toTopHover" style="opacity: 0;"></span>
-                            To Top
-                        </a>
+                            <li class="active"><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
+                            <a id="toTop" href="#" style="display: inline;">
+                                <span id="toTopHover" style="opacity: 0;"></span>
+                                To Top
+                            </a>
                         {% else %}
-                        <li><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
-                        <a id="toTop" href="#" style="display: inline;">
-                            <span id="toTopHover" style="opacity: 0;"></span>
-                            To Top
-                        </a>
-                        <a id="toTop" href="#" style="display: inline;">
-                            <span id="toTopHover" style="opacity: 0;"></span>
-                            To Top
-                        </a>
+                            <li><a href="{% url 'cabinet:profile_options' %}" >{% trans 'Options' %}</a></li>
+                            <a id="toTop" href="#" style="display: inline;">
+                                <span id="toTopHover" style="opacity: 0;"></span>
+                                To Top
+                            </a>
                         {% endif %}
                     {% else %}
                         {% if request.get_full_path == url_auth_login %}
-                            <li><a href="{% url 'auth_login' %}" >{% trans 'Log in' %}</a></li>
+                            <li class="active"><a href="{% url 'auth_login' %}" >{% trans 'Log in' %}</a></li>
                             <a id="toTop" href="#" style="display: inline;">
                                 <span id="toTopHover" style="opacity: 0;"></span>
                                 To Top
