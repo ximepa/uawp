@@ -122,10 +122,10 @@ class AccountData(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     coints = models.IntegerField(default=0)
-    is_premium = models.BooleanField()
-    is_vip = models.BooleanField()
-    premium_start = models.DateTimeField()
-    premium_end = models.DateTimeField()
+    is_premium = models.BooleanField(default=False,)
+    is_vip = models.BooleanField(default=False,)
+    premium_start = models.DateTimeField(null=True, blank=True)
+    premium_end = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
           return "%s's profile" % self.user

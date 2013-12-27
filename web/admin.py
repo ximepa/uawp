@@ -79,6 +79,7 @@ class StaticPagesAdmin(TranslationAdmin):
         (_(u'Options:'), {'fields': static_fields}),
         ]
 
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(NewsGroups, NewsGroupsAdmin)
 admin.site.register(StaticPages, StaticPagesAdmin)
