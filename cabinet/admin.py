@@ -54,8 +54,10 @@ class UserProfileAdmin(admin.ModelAdmin):
             'is_vip',
             'premium_start',
             'premium_end',
+            'game_acc',
         )})]
     list_display = ('id', 'user', 'coints', 'is_premium', 'is_vip', 'premium_start', 'premium_end')
+    filter_horizontal = ('game_acc',)
 
 
 

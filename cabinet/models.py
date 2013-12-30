@@ -114,6 +114,10 @@ class AccountData(models.Model):
     credits = models.BigIntegerField()
     email = models.CharField(max_length=30, blank=True)
     last_logout = models.BigIntegerField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         managed = False
         db_table = 'account_data'
@@ -121,7 +125,7 @@ class AccountData(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    game_acc = models.ManyToManyField('AccountData', related_name='game_accounts')
+    game_acc = models.ManyToManyField('AccountData', related_name='game_accounts', blank=True)
     coints = models.IntegerField(default=0)
     is_premium = models.BooleanField(default=False,)
     is_vip = models.BooleanField(default=False,)

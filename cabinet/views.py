@@ -18,13 +18,13 @@ def profile(request, ):
         ENABLE_CABINET = True
         return ENABLE_CABINET
     if settings.ENABLE_CABINET:
-        characters = Players.objects.all()
+        players = Players.objects.all()
         if request.user.is_authenticated():
             try:
                 user_profile = UserProfile.objects.get(user=request.user)
                 user_game_acc = user_profile.game_acc.all()
                 user_acc_count = user_game_acc.count()
-                user_characters = characters.filter(account_name__in = user_game_acc)
+                user_characters = players.filter(account_name__in=user_game_acc)
                 print user_characters
                 no_game_account = _('У вас нету игровых аккаутнов, чтобы создать новый аккаунт или привязать сущестующий, перейдите в настройки')
                 if user_game_acc.count() == 0:
