@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-
+import hashlib
+import base64
 
 class Players(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -117,6 +118,10 @@ class AccountData(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def check_password(self,raw_password):
+        encoded_password = base64.b64encode(hashlib.sha1(raw_password).hexdigest().decode('hex'))
+        return self.password == encoded_password
 
     class Meta:
         managed = False

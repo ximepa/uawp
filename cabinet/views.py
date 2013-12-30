@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from cabinet.models import Players, UserProfile
+from cabinet.forms import CreateGameAccountForm
 from django.utils.translation import gettext as _
 from uawp import settings
 
@@ -59,4 +60,18 @@ def bind_game_acc(request):
 
 
 def create_game_acc(request):
-    pass
+    create_game_acc_form = CreateGameAccountForm()
+    if settings.ENABLE_CABINET:
+        if request.user.is_authenticated():
+            if request.method == 'POST':
+                create_game_acc_form = CreateGameAccountForm(request.POST)
+                account_name = request.POST.get('account_name')
+                password1 = request.POST.get('password1')
+                password2 = request.POST.get('password2')
+                if password1 == password2:
+
+                    return render_to_response('cabinet/options.html', {'user': request.user}, context_instance=RequestContext(request))
+        else:
+            return HttpResponseRedirect('/accounts/login')
+    else:
+        return render_to_response('404.html', {}, context_instance=RequestContext(request))

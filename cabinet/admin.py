@@ -44,6 +44,26 @@ class PlayersAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'account_id', 'account_name')
 
 
+class AccountDataAdmin(admin.ModelAdmin):
+
+    fieldsets = [
+        (_(u'Options:'), {'fields': (
+            'name',
+            'password',
+            'activated',
+            'access_level',
+            'membership',
+            'last_server',
+            'last_ip',
+            'last_mac',
+            'ip_force',
+            'credits',
+            'email',
+            'last_logout',
+        )})]
+    list_display = ('id', 'name', 'password', 'activated', 'access_level')
+
+
 class UserProfileAdmin(admin.ModelAdmin):
 
     fieldsets = [
@@ -62,4 +82,5 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Players, PlayersAdmin)
+admin.site.register(AccountData, AccountDataAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
