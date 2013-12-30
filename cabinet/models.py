@@ -105,10 +105,10 @@ class AccountData(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(unique=True, max_length=45)
     password = models.CharField(max_length=65)
-    activated = models.IntegerField()
-    access_level = models.IntegerField()
-    membership = models.IntegerField()
-    last_server = models.IntegerField()
+    activated = models.IntegerField(blank=True, null=True)
+    access_level = models.IntegerField(blank=True, null=True)
+    membership = models.IntegerField(blank=True, null=True)
+    last_server = models.IntegerField(blank=True, null=True)
     last_ip = models.CharField(max_length=20, blank=True)
     last_mac = models.CharField(max_length=20, blank=True)
     ip_force = models.CharField(max_length=20, blank=True)
@@ -119,7 +119,7 @@ class AccountData(models.Model):
     def __unicode__(self):
         return self.name
 
-    def check_password(self,raw_password):
+    def check_password(self, raw_password):
         encoded_password = base64.b64encode(hashlib.sha1(raw_password).hexdigest().decode('hex'))
         return self.password == encoded_password
 
