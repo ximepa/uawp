@@ -22,12 +22,16 @@ def profile(request, ):
         return ENABLE_CABINET
     if settings.ENABLE_CABINET:
         players = Players.objects.all()
+        print players
         if request.user.is_authenticated():
             try:
                 user_profile = UserProfile.objects.get(user=request.user)
+                print user_profile.game_acc.all()
                 user_game_acc = user_profile.game_acc.all()
+                print user_game_acc
                 user_acc_count = user_game_acc.count()
-                user_characters = players.filter(account_name__in=user_game_acc)
+                print user_acc_count
+                user_characters = players.filter(account_name__in=['ximepa', 'test'])
                 print user_characters
                 no_game_account = _('У вас нету игровых аккаутнов, чтобы создать новый аккаунт или привязать сущестующий, перейдите в настройки')
                 if user_game_acc.count() == 0:
@@ -82,12 +86,17 @@ def create_game_acc(request):
                             user_profile = UserProfile.objects.get(user=request.user)
                             if user_profile.game_acc.count() <= settings.GAME_ACCOUNT_LIMIT:
                                 print '<='
-                                account = AccountData.objects.create(name=account_name)
+                                account = AccountData(name=create_game_acc_form.cleaned_data['account_name'])
                                 account.password = base64.b64encode(hashlib.sha1(create_game_acc_form.cleaned_data['password1']).hexdigest().decode('hex'))
-                                print account.activated
+                                print account.password
                                 account.activated = 1
+                                account.access_level = 0
+                                account.membership = 0
+                                account.last_server = 0
+                                account.credits = 0
                                 print account.activated
                                 account.save()
+                                print account.pk
                                 user_profile.game_acc.add(account)
                                 return HttpResponseRedirect('/accounts/profile/game_acc_success/')
                             else:
