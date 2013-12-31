@@ -82,7 +82,9 @@ def create_game_acc(request):
                         try:
                             print 'try'
                             user_profile = UserProfile.objects.get(user=request.user)
-                            if user_profile.game_acc.count() <= settings.GAME_ACCOUNT_LIMIT:
+                            accounts = AccountData.objects.filter(user_profile=user_profile.id)
+                            print accounts.count()
+                            if accounts.count() <= settings.GAME_ACCOUNT_LIMIT:
                                 print '<='
                                 account = AccountData(name=create_game_acc_form.cleaned_data['account_name'])
                                 account.password = base64.b64encode(hashlib.sha1(create_game_acc_form.cleaned_data['password1']).hexdigest().decode('hex'))
@@ -92,6 +94,7 @@ def create_game_acc(request):
                                 account.membership = 0
                                 account.last_server = 0
                                 account.credits = 0
+                                account.user_profile = user_profile.id
                                 print account.activated
                                 account.save()
                                 print account.pk
