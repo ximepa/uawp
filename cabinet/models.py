@@ -7,7 +7,7 @@ import base64
 class Players(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(unique=True, max_length=50)
-    account_id = models.IntegerField()
+    account = models.ForeignKey('AccountData')
     account_name = models.CharField(max_length=50)
     exp = models.BigIntegerField()
     recoverexp = models.BigIntegerField()
@@ -106,6 +106,7 @@ class PlayerAppearance(models.Model):
 
 class AccountData(models.Model):
     #id = models.IntegerField(primary_key=True)
+    user_profile = models.ForeignKey('UserProfile', blank=True, null=True)
     name = models.CharField(unique=True, max_length=45)
     password = models.CharField(max_length=65)
     activated = models.IntegerField()
@@ -127,21 +128,23 @@ class AccountData(models.Model):
         return self.password == encoded_password
 
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'account_data'
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    game_acc = models.ManyToManyField('AccountData', related_name='game_accounts', blank=True)
     coints = models.IntegerField(default=0)
     is_premium = models.BooleanField(default=False,)
     is_vip = models.BooleanField(default=False,)
     premium_start = models.DateTimeField(null=True, blank=True)
     premium_end = models.DateTimeField(null=True, blank=True)
 
-    def __str__(self):
-          return "%s's profile" % self.user
+    def __unicode__(self):
+        return unicode(self.user)
+
+    #def user_game_acc(self):
+    #    return self.game_acc_id
 
 
 def create_user_profile(sender, instance, created, **kwargs):

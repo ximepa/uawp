@@ -30,9 +30,9 @@
                 {% for game_acc in user_profile.game_acc.all %}
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-96449" href="#{{ game_acc.login }}">{{ game_acc.login }}</a>
+                             <a class="accordion-toggle collapsed btn btn-default" data-toggle="collapse" data-parent="#accordion-96449" href="#{{ game_acc.name }}">{{ game_acc.name }} <i class="glyphicon glyphicon-chevron-down"></i></a>
                         </div>
-                        <div id="{{ game_acc.login }}" class="accordion-body collapse">
+                        <div id="{{ game_acc.name }}" class="accordion-body collapse">
                             <div class="accordion-inner">
                                 <div class="left-block">
                                     <h3 style="text-align: center">{% trans 'Game account' %}</h3>

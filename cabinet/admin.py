@@ -11,7 +11,7 @@ class PlayersAdmin(admin.ModelAdmin):
     fieldsets = [
         (_(u'Options:'), {'fields': (
             'name',
-            'account_id',
+            'account',
             'account_name',
             'exp',
             'recoverexp',
@@ -41,13 +41,14 @@ class PlayersAdmin(admin.ModelAdmin):
             'arena_points',
             'partner_id',
         )})]
-    list_display = ('id', 'name', 'account_id', 'account_name')
+    list_display = ('id', 'name', 'account', 'account_name')
 
 
 class AccountDataAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (_(u'Options:'), {'fields': (
+            'user_profile',
             'name',
             'password',
             'activated',
@@ -61,10 +62,21 @@ class AccountDataAdmin(admin.ModelAdmin):
             'email',
             'last_logout',
         )})]
-    list_display = ('id', 'name', 'password', 'activated', 'access_level')
+    list_display = ('name', 'password', 'activated', 'access_level')
 
+
+class AccountDataInline(admin.TabularInline):
+    model = AccountData
+    fk_name = 'user_profile'
+    max_num = 5
+    exclude = ('password',)
 
 class UserProfileAdmin(admin.ModelAdmin):
+
+    inlines = [
+        AccountDataInline,
+    ]
+
 
     fieldsets = [
         (_(u'Options:'), {'fields': (
@@ -74,10 +86,8 @@ class UserProfileAdmin(admin.ModelAdmin):
             'is_vip',
             'premium_start',
             'premium_end',
-            'game_acc',
         )})]
     list_display = ('id', 'user', 'coints', 'is_premium', 'is_vip', 'premium_start', 'premium_end')
-    filter_horizontal = ('game_acc',)
 
 
 
