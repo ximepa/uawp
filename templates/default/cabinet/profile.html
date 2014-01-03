@@ -27,7 +27,7 @@
             <hr>
         {% else %}
             <div class="accordion" id="accordion-96449">
-                {% for game_acc in user_profile.game_acc.all %}
+                {% for game_acc in user_game_acc %}
                     <div class="accordion-group">
                         <div class="accordion-heading">
                              <a class="accordion-toggle collapsed btn btn-default" data-toggle="collapse" data-parent="#accordion-96449" href="#{{ game_acc.name }}">{{ game_acc.name }} <i class="glyphicon glyphicon-chevron-down"></i></a>
@@ -88,30 +88,30 @@
                                 <div class="right-block">
                                     <h3 style="text-align: center">{% trans 'Characters' %}</h3>
                                     <dl class="dl-horizontal">
-                                        {% for user_character in game_acc.characters %}
-{#                                          <dt>
+                                        {% for user_character in user_characters %}
+                                            <dt>
                                                 {% trans 'Character name' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.char_name }}
+                                                {{ user_character.name }}
                                             </dd>
                                             <dt>
                                                 {% trans 'Sex' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.sex }}
+                                                {{ user_character.exp }}
                                             </dd>
                                             <dt>
                                                 {% trans 'Online' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.online }}
+                                                {{ user_character.race }}
                                             </dd>
                                             <dt>
                                                 {% trans 'PVP' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.pvpkills }}
+                                                {{ user_character.player_class }}
                                             </dd>
                                         {% endfor %}
                                     </dl>

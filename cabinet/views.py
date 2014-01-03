@@ -21,15 +21,15 @@ def profile(request, ):
         return ENABLE_CABINET
     if settings.ENABLE_CABINET:
         players = Players.objects.all()
-        print players
         if request.user.is_authenticated():
             try:
                 user_profile = UserProfile.objects.get(user=request.user)
-                print user_profile
-                #user_game_acc = AccountData.objects.filter(profile=user_profile)
+                user_game_acc = AccountData.objects.filter(user_profile=user_profile)
+                user_values = user_game_acc.values_list('name', flat=True)
+                print list(user_game_acc)
                 #print user_game_acc
-                user_acc_count = '2'
-                user_characters = players.filter(account_id=1)
+                user_acc_count = user_game_acc.count()
+                user_characters = players.filter(account_name__in=user_values)
                 print user_characters
                 no_game_account = _(u'У вас нету игровых аккаутнов, чтобы создать новый аккаунт или привязать сущестующий, перейдите в настройки')
                 if user_acc_count == 0:
@@ -40,7 +40,7 @@ def profile(request, ):
                 else:
                     return render_to_response('cabinet/profile.html',
                                               {'user': request.user,
-                                               'user_profile': user_profile, 'user_characters': user_characters, 'user_acc_count': user_acc_count}, context_instance=RequestContext(request))
+                                               'user_game_acc': user_game_acc, 'user_characters': user_characters, 'user_acc_count': user_acc_count}, context_instance=RequestContext(request))
             except UserProfile.DoesNotExist:
                 return HttpResponseRedirect('/accounts/register/')
         else:
@@ -66,39 +66,29 @@ def bind_game_acc(request):
 def create_game_acc(request):
     create_game_acc_form = CreateGameAccountForm()
     if settings.ENABLE_CABINET:
-        print 'eneble cabinet true'
         if request.user.is_authenticated():
-            print 'user.is_authenticated'
             if request.method == 'POST':
-                print 'request.method == POST'
                 create_game_acc_form = CreateGameAccountForm(request.POST)
                 account_name = request.POST.get('account_name')
                 password1 = request.POST.get('password1')
                 password2 = request.POST.get('password2')
                 if create_game_acc_form.is_valid():
-                    print 'create_game_acc_form.is_valid'
                     if password1 == password2:
-                        print 'pass1 = pass2'
                         try:
-                            print 'try'
                             user_profile = UserProfile.objects.get(user=request.user)
                             accounts = AccountData.objects.filter(user_profile=user_profile.id)
-                            print accounts.count()
                             if accounts.count() <= settings.GAME_ACCOUNT_LIMIT:
-                                print '<='
-                                account = AccountData(name=create_game_acc_form.cleaned_data['account_name'])
-                                account.password = base64.b64encode(hashlib.sha1(create_game_acc_form.cleaned_data['password1']).hexdigest().decode('hex'))
-                                print account.password
-                                account.activated = 1
-                                account.access_level = 0
-                                account.membership = 0
-                                account.last_server = 0
-                                account.credits = 0
-                                account.user_profile = user_profile.id
-                                print account.activated
-                                account.save()
-                                print account.pk
-                                user_profile.game_acc.add(account)
+                                AccountData.objects.create(
+                                    name=create_game_acc_form.cleaned_data['account_name'],
+                                    user_profile_id=user_profile.id,
+                                    password=base64.b64encode(hashlib.sha1(create_game_acc_form.cleaned_data['password1']).hexdigest().decode('hex')),
+                                    activated=1,
+                                    access_level=0,
+                                    membership=0,
+                                    last_server=0,
+                                    credits=0,
+
+                                )
                                 return HttpResponseRedirect('/accounts/profile/game_acc_success/')
                             else:
                                 print 'to many game account'
