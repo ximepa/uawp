@@ -128,7 +128,7 @@ class AccountData(models.Model):
         return self.password == encoded_password
 
     class Meta:
-        #managed = False
+        managed = False
         db_table = 'account_data'
 
 

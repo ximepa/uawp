@@ -26,8 +26,6 @@ def profile(request, ):
                 user_profile = UserProfile.objects.get(user=request.user)
                 user_game_acc = AccountData.objects.filter(user_profile=user_profile)
                 user_values = user_game_acc.values_list('name', flat=True)
-                print list(user_game_acc)
-                #print user_game_acc
                 user_acc_count = user_game_acc.count()
                 user_characters = players.filter(account_name__in=user_values)
                 print user_characters

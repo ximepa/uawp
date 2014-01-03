@@ -88,7 +88,7 @@
                                 <div class="right-block">
                                     <h3 style="text-align: center">{% trans 'Characters' %}</h3>
                                     <dl class="dl-horizontal">
-                                        {% for user_character in user_characters %}
+                                        {% for user_character in game_acc.players_set.all %}
                                             <dt>
                                                 {% trans 'Character name' %}
                                             </dt>
@@ -99,19 +99,25 @@
                                                 {% trans 'Sex' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.exp }}
+                                                {{ user_character.gender|lower }}
                                             </dd>
                                             <dt>
-                                                {% trans 'Online' %}
+                                                {% trans 'Race' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.race }}
+                                                {{ user_character.race|lower }}
                                             </dd>
                                             <dt>
-                                                {% trans 'PVP' %}
+                                                {% trans 'Class' %}
                                             </dt>
                                             <dd>
-                                                {{ user_character.player_class }}
+                                                {{ user_character.player_class|lower }}
+                                            </dd>
+                                            <dt>
+                                                {% trans 'Last online' %}
+                                            </dt>
+                                            <dd>
+                                                {{ user_character.last_online|lower }}
                                             </dd>
                                         {% endfor %}
                                     </dl>
