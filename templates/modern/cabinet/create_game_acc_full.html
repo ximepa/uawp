@@ -1,0 +1,23 @@
+{% extends 'profile/profile_base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Создать игровой аккаунт' %}{% endblock %}
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'web:main' %}">{% trans 'Главная' %}</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{% url 'web:user_profile' %}">{% trans 'Личный кабинет' %}</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {% trans 'Превышено максимальное количество' %} <span class="divider">/</span>
+        </li>
+    </ul>
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <label>{% trans 'Вы использовали максимальное количество игровых аккаунтов' %}</label>
+    {% else %}
+        Вы не авторизированы
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+#user11 {
+	background: url(../images/cop-center.jpg) no-repeat top left;
+	height:152px;
+	width:655px;
+	margin-left:-2px;
+}
+#bot_left {
+	margin-left:-0px;
+}
+#bot_right {
+	margin-left:-3px;
+}
+#nmz-wrapper1 {
+	background: url(../images/top.jpg) no-repeat center top;
+	padding-left:3px;
+}
+

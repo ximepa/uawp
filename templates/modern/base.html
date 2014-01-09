@@ -1,0 +1,287 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load static_pages %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/mod_yoo_carousel.css' %}" type="text/css" />
+<style type="text/css">
+<!--
+#dm_tabs_1 ul.dm_menu_1 { width:auto; margin:0; padding:0; list-style:none; }
+#dm_tabs_1 ul.dm_menu_1 li.dm_menu_item_1 { display: inline; margin:0 0 0 0; padding:0; float:left; border:none; border-bottom:none; background-color:none; background-image:none; }
+#dm_tabs_1 ul.dm_menu_1 li.dm_menu_item_1 a { font:bold 13px Arial; float:left; border:none; color:#2f2f31; padding:3px 11px 0px 11px; text-decoration:none; }
+#dm_tabs_1 ul.dm_menu_1 li.dm_menu_item_1 a.dm_selected { position:relative;top:0px;background-color:none;color:#c5cbdb; }
+#dm_tabs_1 ul.dm_menu_1 li.dm_menu_item_1 a:hover {background-color:none;color:#c5cbdb; }
+#dm_container_1 {border:none;width:auto;height:auto;background-color:none;padding:5px;overflow:hidden; }
+#dm_container_1 .dm_tabcontent {display:none; }
+@media print { #dm_container_1 .dm_tabcontent {display:block !important; } }
+-->
+</style>
+<script type="text/javascript" src="{% static 'js/mootools.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/dinamods.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mod_yoo_carousel.js' %}"></script>
+<style type="text/css">#ps_results{margin-left:0px;}</style>
+<link rel="stylesheet" href="{% static 'css/template_css.css' %}" type="text/css" />
+<!--[if lte IE 6]>
+<style type="text/css">
+.clearfix {height: 1%;}
+</style>
+<![endif]-->
+<!--[if gte IE 7]>
+<link rel="stylesheet" type="text/css" href="{% static 'css/ie7.css' %}"/>
+<![endif]-->
+<script type="text/javascript">
+<!--
+if(window.opera) {document.write('<link rel="stylesheet" type="text/css" href="{% static 'css/opera.css' %}" />');}
+//-->
+</script>
+<script type="text/javascript">
+<!--
+var detect = navigator.userAgent.toLowerCase();
+if((detect.indexOf('safari'))!=-1) {document.write('<link href="{% static 'css/safari.css' %}" rel="stylesheet" type="text/css" />');};
+//-->
+</script>
+</head>
+<body id="bd" class="fs3">
+<div id="nmz-wrapper2">
+	<div id="nmz-wrapper1">
+		<div id="nmz-wrapper">
+			<div align="center" id="top_flash">
+				<embed src="{% static 'flash/top.swf' %}" width="1000" height="300" hspace="0" vspace="0" autostart="true" align="absmiddle" id="flash-top" wmode="transparent" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type='application/x-shockwave-flash' bgcolor='' scale='noborder'></embed>
+			</div>
+			<div id="nmz-containerwrap">
+				<div id="nmz-container" class="clearfix">
+					<div id="nmz-mainbody">
+						<div id="nmz-topsl" class="clearfix"></div>
+						<!-- BEGIN: CONTENT -->
+						<div id="nmz-contentwrap2">
+							<div id="nmz-contentwrap">
+								<div id="nmz-content"></div>
+								<div align="center">
+									<table width="907" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td align="left" valign="top">
+										<div id="user1" class="clearfix">
+											<div style="padding-bottom:13px;" align="left" id="elyos">
+												<embed src="{% static 'flash/elyos.swf' %}"
+												width="100"
+												height="103" hspace="0" vspace="0" autostart="true" align="absmiddle" id="flash-top"
+												wmode = "transparent" 
+												quality="high"
+												pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" bgcolor="" scale= "noborder"></embed>
+											</div>
+											<ul class="menu">
+												<li class="item13"><a href="#"><span>left menu 1</span></a></li>
+												<li class="item14"><a href="#"><span>left menu 2</span></a></li>
+												<li class="item15"><a href="#"><span>left menu 3</span></a></li>
+												<li class="item16"><a href="#"><span>left menu 4</span></a></li>
+												<li class="item17"><a href="#"><span>left menu 5</span></a></li>
+											</ul>     
+										</div>
+									</td>
+									<td align="left" valign="top">
+										<div id="user2" class="clearfix">
+											<div class="basic">
+												<div id="yoo-carousel-1" class="yoo-carousel" style="width: 550px;height: 198px;">
+                                                    {% block content %}
+                                                                                {% endblock %}
+
+
+												</div>
+											</div>
+											<script type="text/javascript">
+											// <!--
+											window.addEvent('domready', function(){ new YOOcarousel('yoo-carousel-1', { transitionEffect: 'fade', transitionDuration: 700, rotateAction: 'mouseover', rotateActionDuration: 200, rotateActionEffect: 'scroll', slideInterval: 10000, autoplay: 'once' }); });
+											// -->
+											</script>
+										</div>
+									</td>
+									<td align="left" valign="top">
+										<div id="user3" class="clearfix">
+											<div style="padding-bottom:0px;" align="right" id="asmo">
+												<embed src="{% static 'flash/asmo.swf' %}"
+												width="93"
+												height="116" hspace="0" vspace="0" autostart="true" align="absmiddle" id="flash-top"
+												wmode = "transparent" 
+												quality="high"
+												pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" bgcolor="" scale= "noborder"></embed>
+											</div>
+
+											<ul class="menu_style1">
+												<li class="item23"><a href="#"><span>right menu 1</span></a></li>
+												<li class="item25"><a href="#"><span>right menu 2</span></a></li>
+												<li class="item28"><a href="#"><span>right menu 3</span></a></li>
+												<li class="item26"><a href="#"><span>right menu 4</span></a></li>
+												<li class="item27"><a href="#"><span>right menu 5</span></a></li>
+											</ul>
+										</div>
+									</td>
+									</tr>
+									</table>
+
+									<table width="907" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="357" height="94"align="left" valign="top"><div id="user4" class="clearfix"></div></td>
+									<td width="198" align="center" valign="top"><div id="user5" class="clearfix"></div></td>
+									<td width="352" align="right" valign="top"><div id="user6" class="clearfix"></div></td>
+									</tr>
+									</table>
+
+									<table width="907" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="362" align="left" valign="top">
+										<div id="user7" class="clearfix">
+											<div class="docman" style="padding-top:45px; padding-left:20px;">
+												<div class="mod_docman_catdown">
+													<ul class="mod_docman_latestdown">
+														<li><a href="#">new file</a></li>
+														<li><a href="#">new file</a></li>
+														<li><a href="#">new file</a></li>
+														<li><a href="#">new file</a></li>
+														<li><a href="#">new file</a></li>
+														<li><a href="#">new file</a></li>
+													</ul>
+												</div>     
+											</div>
+										</div>
+									</td>
+									<td width="192" align="center" valign="top">
+										<div align="top" id="user8" class="clearfix">
+											<div id="pixelsearch" align="center">
+												<div class="pixsearch"><input id="ps_search_str" name="searchword" type="text" value="" autocomplete="off" /></div>
+											</div>
+										</div>
+									</td>
+									<td width="353" align="right" valign="top">
+										<div id="user9" class="clearfix">
+											<div id="latestnews">
+												<div class="div_lnd_list">
+													<ul class="lnd_latestnews">
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+														<li class="lnd_latestnews"><a href="#" class="latestnews">new close</a></li>
+													</ul>
+												</div>
+												<div style="clear:both"></div>
+											</div>
+										</div>
+									</td>
+									</tr>
+									</table>	
+								</div>
+							</div>
+						</div>
+						<!-- END: CONTENT -->
+					</div>
+				</div>
+			</div>
+			
+			<table width="998" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			<td width="263" align="left" valign="top"><img src="{% static 'images/niz-l.jpg' %}" width="263" height="152" /></td>
+			<td width="472" align="center" valign="top"><div align="top" id="user10" class="clearfix"></div></td>
+			<td width="263" align="right" valign="top"><img src="{% static 'images/niz-r.jpg' %}" width="263" height="152" /></td>
+			</tr>
+			</table>
+
+			<div id="bot_mod">
+				<table width="998" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+				<td width="171" align="left" valign="top"><img id="bot_left" src="{% static 'images/cop-l.jpg' %}" width="171" height="152" align="left" /></td>
+				<td width="655" align="left" valign="top">
+					<div align="top" id="user11" class="clearfix">
+						<div id="dm_tabs_1">
+							<ul class="dm_menu_1">
+								<li class="dm_menu_item_1"><a href="/28:-" rel="dm_tab_1_1" class="dm_selected">Forum news</a></li>
+								<li class="dm_menu_item_1"><a href="/33:--" rel="dm_tab_1_2">last in forum</a></li>
+								<li class="dm_menu_item_1"><a href="/34:" rel="dm_tab_1_3">wote</a></li>
+								<li class="dm_menu_item_1"><a href="/36:" rel="dm_tab_1_4">statictic</a></li>
+							</ul>
+						</div>
+						<br style="clear:left;" />
+						<div id="dm_container_1">
+							<div id="dm_tab_1_1" class="dm_tabcontent">
+								<div class="moduletable">
+									<table width='100%' border='0' cellpadding='2' cellspacing='1' style='border: solid 0px;'>
+									<tr class='sectiontableentry34'>
+									<td style='width:330px;'><a href='#' title=''>message 1</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr class='sectiontableentry33'>
+									<td style='width:330px;'><a href='#' title=''>message 2</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr class='sectiontableentry34'>
+									<td style='width:330px;'><a href='#' title=''>message 3</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr><td colspan='5'>&nbsp;</td></tr>
+									</table>     
+								</div>
+							</div>
+							<div id="dm_tab_1_2" class="dm_tabcontent">
+								<div class="moduletable">
+									<table width='100%' border='0' cellpadding='2' cellspacing='1' style='border: solid 0px;'>
+									<tr class='sectiontableentry34'>
+									<td style='width:330px;'><a href='#' title=''>message on forum 1</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr class='sectiontableentry33'>
+									<td style='width:330px;'><a href='#' title=''>message on forum 2</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr class='sectiontableentry34'>
+									<td style='width:330px;'><a href='#' title=''>message on forum 3</a></td>
+									<td style='width:170px;'><div align='left'><a href='#' title='last message'>date</a>&nbsp; from <b><i>author</i></b></div></td>
+									</tr>
+									<tr><td colspan='5'>&nbsp;</td></tr>
+									</table>      
+								</div>
+							</div>
+							<div id="dm_tab_1_3" class="dm_tabcontent">
+								<div class="moduletable">
+									<div align="center" style="padding-top:30px;">
+										banner
+									</div>
+								</div>
+							</div>
+							<div id="dm_tab_1_4" class="dm_tabcontent">
+								<div class="moduletable">
+									<div align="center" style="padding-top:30px;">
+										timestamp
+									</div>    
+								</div>
+							</div>
+						</div>
+						<script type="text/javascript" language="javascript">
+						<!--
+						var Dinamods=new dinamods("dm_tabs_1")
+						Dinamods.setpersist(true)
+						Dinamods.setselectedClassTarget("link")
+						Dinamods.init(0,1)
+						-->
+						</script>
+					</div>
+				</td>
+				<td width="172" align="right" valign="top"><img id="bot_right" src="{% static 'images/cop-r2.jpg' %}" width="172" height="152" /></td>
+				</tr>
+				</table>
+			</div>
+			<div id="copyrights" align="center" style="margin-left:-1px;"><img src="{% static 'images/copyr.jpg' %}" width="730" height="66" /></div>
+			<!-- BEGIN: FOOTER -->
+			<div id="nmz-footerwrap" class="clearfix">
+				<div id="nmz-footer"></div>
+			</div>
+			<!-- END: FOOTER -->
+		</div>
+	</div>
+</div>
+</body>
+</html>

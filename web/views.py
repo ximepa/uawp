@@ -14,11 +14,9 @@ from web.forms import NewsGroupForm
 
 def index(request):
     hello = 'hello'
-    return render_to_response('index.html', {'hello': hello, 'user': request.user},
-                                  context_instance=RequestContext(request))
+    return render_to_response('index.html', {'hello': hello, 'user': request.user}, context_instance=RequestContext(request))
 
 
-# Новости
 def news(request):
     from django.utils import translation
     cur_language = translation.get_language()

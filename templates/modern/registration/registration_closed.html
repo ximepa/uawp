@@ -1,0 +1,17 @@
+{% extends "aion/registration/registration_base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Registration not allow' %}{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="alert alert-info">
+                     <button type="button" class="close" data-dismiss="alert">×</button>
+                    <h4>
+                    </h4> {% blocktrans %}<strong>Registration</strong> not allow{% endblocktrans %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

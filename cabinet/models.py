@@ -45,7 +45,7 @@ class Players(models.Model):
 
 
 class PlayerAppearance(models.Model):
-    player_id = models.IntegerField(primary_key=True)
+    player = models.ForeignKey('Players', primary_key=True)
     voice = models.IntegerField()
     skin_rgb = models.IntegerField()
     hair_rgb = models.IntegerField()

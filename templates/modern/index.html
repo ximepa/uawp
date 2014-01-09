@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="bottom" style="overflow: hidden; height: 198px;">
+<div class="frame" style="width: 550px;">
+    <div class="panel-container" style="width: 550px;">
+        <div class="panel-container-outer">
+            <div class="panel-container-inner" style="height: 166px;width: 546px;">
+                <div class="panel" style="width: 546px;">
+                    <div style="width: 2733px;">
+                        <div class="slide" style="width: 546px;">
+                            <div class="article">
+                                <p><img style="margin-top: 10px; margin-bottom: 10px; margin-right: 10px" alt="title" title="title" src="{% static 'images/aionsite.png' %}" align="left" height="81" width="81" /></p>
+                                <div style="line-height: 23px">
+                                    <font size="3"><strong>{% trans 'Aion-Base.Ru, релизная версия!' %}</strong></font>
+                                    <div style="line-height: 5px">
+                                        <div style="line-height: 16px">
+                                            <span>{% trans 'Не так уж долго осталось ждать до запуска Preselection. Мы рады вам сообщить, что через пару часов будет сделано обновление игры, которое вы сразу же сможете скачать. Это обновление применимо как для Preselection, так и для Head Start...' %}<br /></span>
+                                        </div>
+                                        <div style="line-height: 14px" align="right">
+                                            <font size="2"><a href="#" title="{% trans 'Прочитать новость полностью' %}">{% trans 'Подробнее' %}</a></font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide" style="width: 546px;">
+                            <div class="article">
+                                <p><img style="margin-top: 10px; margin-bottom: 10px; margin-right: 10px" alt="title" title="title" src="{% static 'images/aionsite.png' %}" align="left" height="81" width="81" /></p>
+                                <div style="line-height: 23px">
+                                    <font size="3"><strong>{% trans 'Aion-Base.Ru, релизная версия!' %}</strong></font>
+                                    <div style="line-height: 5px">
+                                        <div style="line-height: 16px">
+                                            <span>{% trans 'Не так уж долго осталось ждать до запуска Preselection. Мы рады вам сообщить, что через пару часов будет сделано обновление игры, которое вы сразу же сможете скачать. Это обновление применимо как для Preselection, так и для Head Start...' %}<br /></span>
+                                        </div>
+                                        <div style="line-height: 14px" align="right">
+                                            <font size="2"><a href="#" title="{% trans 'Прочитать новость полностью' %}">{% trans 'Подробнее' %}</a></font>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="tabs" style="width: 550px;">
+    <li class="button item1"><a href="javascript:void(0)" title="-18.09-"><span><span>-18.09-</span></span></a></li>
+    <li class="button item2"><a href="javascript:void(0)" title="-04.09-"><span><span>-04.09-</span></span></a></li>
+    <li class="button item3"><a href="javascript:void(0)" title="-28.08-"><span><span>-28.08-</span></span></a></li>
+    <li class="button item4"><a href="javascript:void(0)" title="-12.08-"><span><span>-12.08-</span></span></a></li>
+    <li class="button item5"><a href="javascript:void(0)" title="-07.08-"><span><span>-07.08-</span></span></a></li>
+</ul>
+</div>
+
+{% endblock %}

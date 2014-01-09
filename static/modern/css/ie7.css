@@ -1,0 +1,40 @@
+#user2 {
+	background: url(../images/top-c.jpg) no-repeat top center;
+	height:221px;
+	display:block;
+	float:left;
+
+}
+#user1 {
+	background: url(../images/top-l.jpg) no-repeat top left;
+	height:221px;
+	width:179px;
+	display:block;
+	float:left;
+	margin-left:1px;
+}
+#user3 {
+	background: url(../images/top-r.jpg) no-repeat top right;
+	height:221px;
+	width:171px;
+	margin-left:0px;
+	display:block;
+	float:left;
+}
+#nmz-mainbody {
+	padding-top:30px;
+	float: right;
+	width: 998px;
+}
+
+#copyrights {
+	margin-top:-3px;
+}
+#bot_mod {
+	margin-top:-2px;
+}
+#latestnews {
+	width:215px; 
+	padding-top:55px; 
+	padding-right:20px; 
+}
