@@ -71,6 +71,7 @@ class AccountDataInline(admin.TabularInline):
     max_num = 5
     exclude = ('password',)
 
+
 class UserProfileAdmin(admin.ModelAdmin):
 
     inlines = [

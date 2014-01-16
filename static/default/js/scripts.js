@@ -21,5 +21,5 @@ function getCookie(c_name) {
 
 
 $(document).ready(function($) {
-    $('#id_captcha_1').addClass('form-control')
+    //$('#id_captcha_1').addClass('form-control')
 });

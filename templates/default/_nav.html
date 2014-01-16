@@ -42,7 +42,7 @@
                 {% if request.get_full_path == url_feedback %}
                     <li class="active"><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
                 {% else %}
-                    <li><a href="{% url 'feedback' %}" >{% trans 'Feedback' %}</a></li>
+                    <li><a href="{% url 'feed_back:feedback' %}" >{% trans 'Feedback' %}</a></li>
                 {% endif %}
                 {% url 'auth_login' as url_auth_login %}
                 {% url 'cabinet:user_profile' as url_user_profile %}

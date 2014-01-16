@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.utils.translation import ugettext as _
+from captcha.fields import CaptchaField
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from registration.forms import RegistrationForm
+
+
+class CaptchaRegistrationForm(RegistrationForm):
+    captcha = CaptchaField(label=_('Captcha'))
+
+
+class CaptchaAuthenticationForm(AuthenticationForm):
+    captcha = CaptchaField(label=_('Captcha'))
 
 
 class BindGameAccountForm(forms.Form):

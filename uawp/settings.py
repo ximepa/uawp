@@ -115,6 +115,12 @@ AUTH_PROFILE_MODULE = 'cabinet.UserProfile'
 GAME_ACCOUNT_LIMIT = 5
 ENABLE_CABINET = True
 ENABLE_FEEDBACK = True
+CAPTCHA_TIMEOUT = 2
+CAPTCHA_LENGTH = 4
+CAPTCHA_LETTER_ROTATION = (-10,10)
+CAPTCHA_BACKGROUND_COLOR = '#ffffff'
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
+CAPTCHA_OUTPUT_FORMAT = u'%(image)s %(hidden_field)s %(text_field)s'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
