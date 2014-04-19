@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'uawp.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGES = (
+    #('uk', 'Ukraine'),
     ('ru', 'Russian'),
     ('en', 'English'),
 )

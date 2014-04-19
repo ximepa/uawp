@@ -1,35 +1,33 @@
-{% extends 'base.html' %}
+{% extends "layout.html" %}
 {% load i18n %}
 {% block title %}
     {{ pages.title }}
 {% endblock %}
 {% block content %}
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">
-        <h1>
-            {% if request.LANGUAGE_CODE == 'ru' %}
-                {{ pages.page_name_ru }}
-            {% else %}
-                {{ pages.page_name }}
-            {% endif %}
-        </h1>
-        <p class="lead">{% trans 'by' %} {{ pages.author }}</p>
-        <hr>
-        <p>
-            <span class="glyphicon glyphicon-time"></span>
-            Posted on {{ pages.created }} {% if pages.last_modified %}({% trans 'last modified on' %} {{ pages.last_modified }}){% endif %}
-        </p>
-        <hr>
-        <p>
-            {{ pages.text|safe }}
-        </p>
-        <a class="btn btn-primary" href="#">
-            {% trans 'Downloads' %}
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-        <hr>
-    </div>
-    <div class="col-md-1">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                {% if request.LANGUAGE_CODE == 'ru' %}
+                    {{ pages.page_name_ru }}
+                {% else %}
+                    {{ pages.page_name }}
+                {% endif %}
+            </h1>
+            <p class="lead">{% trans 'by' %} {{ pages.author }}</p>
+            <hr>
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                Posted on {{ pages.created }} {% if pages.last_modified %}({% trans 'last modified on' %} {{ pages.last_modified }}){% endif %}
+            </p>
+            <hr>
+            <p>
+                {{ pages.text|safe }}
+            </p>
+            <a class="btn btn-primary" href="#">
+                {% trans 'Downloads' %}
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            <hr>
+        </div>
     </div>
 {% endblock %}
